@@ -1,0 +1,35 @@
+.\"
+.\" Created by hand based off of the "man" man page
+.\"
+.\" Man page for preheat
+.\"
+.\" Copyright (c) 2017, Ilan H. Bigio
+.\"
+.\" You may not distribute.
+.\"
+.\" Ilan H. Bigio
+.\" ibigio@cs.brown.edu
+.\" Department of Computer Science
+.\" Brown University
+.\" Providence, Rhode Island  02912
+.\"
+.\"
+.TH preheat 1 "January 28, 2017"
+.LO 1
+.SH NAME
+preheat \- prepares file for remote execution
+.SH SYNOPSIS
+.B preheat <file>
+
+.SH DESCRIPTION
+.B preheat
+uploads
+.B file
+to file.io server and prints command for execution on any arbitrary terminal. After execution (regardless of success) the file is deleted from file.io.
+
+.SH AUTHOR
+Ilan H. Bigio was the original author of
+.BR "preheat" .
+
+.SH "SEE ALSO"
+shroud(1).

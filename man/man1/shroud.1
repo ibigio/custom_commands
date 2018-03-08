@@ -1,0 +1,42 @@
+.\"
+.\" Created by hand based off of the "man" man page
+.\"
+.\" Man page for shroud
+.\"
+.\" Copyright (c) 2018, Ilan H. Bigio
+.\"
+.\" You may not distribute.
+.\"
+.\" Ilan H. Bigio
+.\" ibigio@cs.brown.edu
+.\" Department of Computer Science
+.\" Brown University
+.\" Providence, Rhode Island  02912
+.\"
+.\"
+.TH shroud 1 "March 6, 2018"
+.LO 1
+.SH NAME
+shroud
+.SH SYNOPSIS
+.B shroud <payload> <disguise> [outfile]
+
+.SH DESCRIPTION
+.B shroud
+Produces new executable combining the
+.B payload
+and
+.B disguise
+files. Upon execution, the executable runs as the
+.B payload
+executable, followed by the
+.B disguise
+executable, and procedes to overwrite itself to be a perfect copy of the
+.B diguise.
+
+.SH AUTHOR
+Ilan H. Bigio was the original author of
+.BR "shroud" .
+
+.SH "SEE ALSO"
+sublime(1).

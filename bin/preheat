@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+import sys
+import json
+import subprocess
+
+def main():
+	# check for correct input
+	if len(sys.argv) != 2:
+		print('usage: preheat <file>')
+		print('        uploads file and prints command for remote execution')
+		return 1
+
+	# uplaod file
+	print('Uploading file...')
+	value = upload(sys.argv[1])
+	# parse info
+	print('Parsing JSON...')
+	data = json.loads(value)
+	url = data['link']
+	expiry = data['expiry']
+
+	print('Done! File expires in %s!' %expiry)
+	print('Command ready to run: source <(curl %s)' %url)
+
+"""
+Uploads file to file.io and returns json with upload info.
+"""
+def upload(file):
+	info = subprocess.check_output(['curl', '-F', 'file=@' + file, 'https://file.io'])
+	return info
+
+
+if __name__ == '__main__':
+	main()

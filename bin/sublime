@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+	open "/Applications/Sublime Text.app"
+elif [ "$#" -eq 1 ]; then
+	open $1 -a "/Applications/Sublime Text.app"
+else
+	echo "usage: sublime [file]"
+	echo "       open sublime [with file]"
+fi

