@@ -1,0 +1,38 @@
+.\"
+.\" Created by hand based off of the "man" man page
+.\"
+.\" Man page for pypreter
+.\"
+.\" Copyright (c) 2017, Ilan H. Bigio
+.\"
+.\" You may not distribute.
+.\"
+.\" Ilan H. Bigio
+.\" ibigio@cs.brown.edu
+.\" Department of Computer Science
+.\" Brown University
+.\" Providence, Rhode Island  02912
+.\"
+.\"
+.TH pypreter 1 "March 15, 2018"
+.LO 1
+.SH NAME
+pypreter \- generates meterpreter payload for python (with msfvenom)
+.SH SYNOPSIS
+.B pypreter
+lhost lport
+
+.SH DESCRIPTION
+.B pypreter
+uses msfvenom to generate a base64 python script that, when run, opens a meterpreter connection to
+.B host
+thorugh given
+.B port
+.
+
+.SH AUTHOR
+Ilan H. Bigio facilitated the use of msfvenom with
+.BR "pypreter" .
+
+.SH "SEE ALSO"
+preheat(1).

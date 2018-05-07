@@ -1,0 +1,12 @@
+#!/bin/bash
+
+NOISE_PATH="/Users/ilanbigio/Documents/Global/Sound/Brown Noise 1 hr.mp3"
+
+if [ "$#" -eq 0 ]; then
+	while [ True ]; do
+		afplay "$NOISE_PATH"
+	done
+else
+	echo "usage: noise"
+	echo "        produces brown noise"
+fi

