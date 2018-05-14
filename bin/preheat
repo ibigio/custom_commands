@@ -20,7 +20,7 @@ def main():
 	expiry = data['expiry']
 
 	print('Done! File expires in %s!' %expiry)
-	print('Command ready to run: source <(curl %s)' %url)
+	print('Command ready to run: curl %s|bash' %url)
 
 """
 Uploads file to file.io and returns json with upload info.
