@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DIR_NAME=""
+
+echo "COMMAND mkser UNDER CONSTRUCTION"
+exit 1
+
+if [ "$#" -eq 2 ]; then
+	shroud $1 $2
+elif [ "$#" -eq 3 ]; then
+	shroud $1 $2 $3
+else
+	echo "usage: shroud <payload> <disguise> [output]"
+	echo "        generate file that executes as <payload> and then becomes <disguise>"
+fi
+
+mkdir $DIR_NAME
+cd $DIR_NAME
+virtualenv env
